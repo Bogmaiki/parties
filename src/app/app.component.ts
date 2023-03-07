@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PartiesDataService } from './parties-data.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'parties';
+  constructor(public service: PartiesDataService) {
+  }
+  addNewParty() {
+    const newParty = prompt("אנא הזן שם של מפלגה");
+    if (newParty != null) {
+      this.service.addParty(newParty);
+    }
+  }
 }
